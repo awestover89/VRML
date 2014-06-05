@@ -1,0 +1,2410 @@
+#VRML V2.0 utf8
+
+DEF main Viewpoint{
+	position 0 -1.5 34
+	fieldOfView .78
+	description "Main Camera"
+}
+
+DEF spiritHall Viewpoint{
+	position 3 -20 50
+	fieldOfView .78
+	description "Spirit Hall"
+}
+
+DEF warroom Viewpoint{
+	position 0 3.5 -1
+	fieldOfView .78
+	description "War Room"
+}
+
+DEF observatory Viewpoint{
+	position 0 18 -7.5
+	fieldOfView .39
+	orientation 0 1 0 3.14
+	description "Observatory"
+	jump FALSE
+}
+
+NavigationInfo{
+	avatarSize [.25,1.6,2.5]
+	speed 3.0
+}
+
+#Fog{
+#color 0 1 .5
+#fogType "EXPONENTIAL"
+#visibilityRange 10
+#}
+
+#Stairs
+
+Collision{
+	collide TRUE
+		children[
+			Transform{
+				translation 3 -2 -9
+					children[
+						DEF stair Shape{
+							appearance Appearance{
+								material Material{
+									emissiveColor 1 .8 0
+									shininess 1
+								}
+							}
+						geometry Box{ size 2 1 1}
+						}
+					]
+			}
+			Transform{
+				translation 3 -1 -10
+					children[
+						USE stair
+					]
+			}
+			Transform{
+				translation 3 0 -11
+					children[
+						USE stair
+					]
+			}
+			Transform{
+				translation 3 1 -12
+					children[
+						USE stair
+					]
+			}
+			Transform{
+				translation 3 1 -13
+					children[
+						USE stair
+					]
+			}
+			Transform{
+				translation 3 2.5 -14
+					children[
+						USE stair
+					]
+			}
+			Transform{
+				translation 3 -20 12
+					children[
+						DEF invistair Shape{
+							appearance DEF invis Appearance{
+								material Material{
+									emissiveColor 0 0 0
+									transparency 1
+								}
+							}
+						geometry Box{ size 2 1 1}
+						}
+					]
+			}
+			Transform{
+				translation 3 -17.5 10
+					children[
+						USE invistair
+					]
+			}
+			Transform{
+				translation 3 -15 8
+					children[
+						USE invistair
+					]
+			}
+			Transform{
+				translation 3 -12.5 6
+					children[
+						USE invistair
+					]
+			}
+			Transform{
+				translation 3 -10 4
+					children[
+						USE invistair
+					]
+			}
+			Transform{
+				translation 3 -7.5 2
+					children[
+						USE invistair
+					]
+			}
+			Transform{
+				translation 3 -5 0
+					children[
+						USE invistair
+					]
+			}
+			Transform{
+				translation 3 -2.5 -2
+					children[
+						USE invistair
+					]
+			}
+		]
+}
+
+
+Collision{
+collide FALSE
+children[
+DEF front Shape{
+	appearance DEF stone Appearance {
+		texture ImageTexture{
+			url "stone.jpg"
+			repeatS TRUE
+			repeatT TRUE
+		}
+	}
+	geometry Box { size 10 5 .3 }
+}
+
+DEF door Shape{
+	appearance DEF wood Appearance {
+		texture ImageTexture{
+			url "wood.jpg"
+			repeatS TRUE
+			repeatT TRUE
+		}
+	}
+	geometry IndexedFaceSet {
+		coord Coordinate {
+			point [
+				-1 -2.2 1.2, -1 -2.2 -1.2, 1 -2.2 1.2
+				1 -2.2 -1.2, -.8 .3 1.2, -.8 .3 -1.2
+				.8 .3 1.2, .8 .3 -1.2, -.25 1.55 1.2
+				-.25 1.55 -1.2, .25 1.55 1.2, .25 1.55 -1.2
+			]
+		}
+			coordIndex [
+				0 1 2 3 -1
+				0 4 8 11 7 3 -1
+				1 5 9 10 6 2 -1
+			]
+			solid FALSE
+	}
+}
+
+Transform{
+	translation -5 1 0
+		children[
+			DEF window Shape{
+				appearance DEF glass Appearance{
+					texture ImageTexture{
+						url "glass.jpg"
+					}
+				}
+				geometry Box{size 1.5 1.5 .35}
+			}
+		]
+}
+
+Transform{
+	translation -10 0 0
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 10 0 0
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation -15 0 -5
+		children[
+			DEF side Shape{
+				appearance USE stone
+				geometry Box { size .3 5 -10 }
+			}
+		]
+}
+
+Transform{
+	translation -15 0 -10
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 15 0 -5
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 15 0 -10
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation -10 0 -15
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 0 0 -15
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 10 0 -15
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 0 -2.5 -2.5
+		children[
+			DEF floor Shape{
+				appearance DEF dirt Appearance{
+					texture ImageTexture{
+					url "dirt.jpg"
+					}
+				}
+			geometry Box{ size 10 .3 5}
+			}
+		]
+}
+
+Transform{
+	translation -10 -2.5 -2.5
+		children[
+			USE floor
+		]
+}
+
+Transform{
+	translation 10 -2.5 -2.5
+		children[
+			USE floor
+		]
+}
+
+Transform{
+	translation 0 -2.5 -7.5
+		children[
+			USE floor
+		]
+}
+
+Transform{
+	translation -10 -2.5 -7.5
+		children[
+			USE floor
+		]
+}
+
+Transform{
+	translation 10 -2.5 -7.5
+		children[
+			USE floor
+		]
+}
+
+Transform{
+	translation 0 -2.5 -12.5
+		children[
+			USE floor
+		]
+}
+
+Transform{
+	translation -10 -2.5 -12.5
+		children[
+			USE floor
+		]
+}
+
+Transform{
+	translation 10 -2.5 -12.5
+		children[
+			USE floor
+		]
+}
+
+Transform{
+	translation -10 0 -5
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation -5 0 -10
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation -10 0 -5
+		children[
+			USE door
+		]
+}
+
+Transform{
+	translation -25 -3.5 -25
+		children[
+		DEF ground Shape {
+        	appearance DEF grass Appearance {
+            		texture ImageTexture {
+               		url "grass.jpg"
+            		}
+         	 }
+         	 geometry ElevationGrid {
+            		xDimension 6
+            		zDimension 6
+           		xSpacing 10.0
+            		zSpacing 6.0
+            		height [
+               			1.5, 1, 0.5, 0.5, 1, 1.5,
+               			1, 0.5, 0.25, 0.25, 0.5, 1,
+               			0.5, 0.25, 0, 0, 0.25, 0.5,
+               			0.5, 0.25, 0, 0, 0.25, 0.5,
+               			1, 0.5, 0.25, 0.25, 0.5, 1,
+               			1.5, 1, 0.5, 0.5, 1, 1.5
+            		]
+         	}
+		}
+		]
+}
+
+Transform{
+	translation -25 -3.5 5
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation -25 -3.5 35
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation -75 -3.5 5
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation -75 -3.5 35
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation -75 -3.5 -25
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation 25 -3.5 5
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation 25 -3.5 -25
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation 25 -3.5 35
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation -25 -3.5 65
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation 25 -3.5 65
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation -75 -3.5 65
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation 25 -3.5 95
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation -25 -3.5 95
+		children[
+			USE ground
+		]
+}
+
+Transform{
+	translation -75 -3.5 95
+		children[
+			USE ground
+		]
+}
+
+#Background
+
+#My made trees
+
+DEF tree Group{
+children[
+Transform{
+	translation 0 -1.5 65
+		children[
+			DEF treetrunk Shape{
+				appearance USE wood
+					geometry Cylinder{ height 3
+							   radius .3}
+			}
+		]
+}
+Transform{
+	translation 0 0 65
+		children[
+			DEF treetop Shape{
+				appearance Appearance{
+					material Material{
+					emissiveColor 0 1 .2
+					diffuseColor 0 1 .4
+					}
+				}
+				geometry Sphere{ radius .8}
+			}
+		]
+}
+Transform{
+	translation -.4 -.2 65
+		children[
+			USE treetop
+		]
+}
+Transform{
+	translation .4 -.2 65
+		children[
+			USE treetop
+		]
+}
+Transform{
+	translation -.3 .5 65
+		children[
+			USE treetop
+		]
+}
+Transform{
+	translation .3 .5 65
+		children[
+			USE treetop
+		]
+}
+Transform{
+	translation 0 1 65
+		children[
+			USE treetop
+		]
+}
+]
+}
+
+DEF grove Group{
+children[
+Transform{
+	translation -1.5 .1 .6
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 2 .1 .9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -4 .1 1.4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -5.5 .1 2.6
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 3.9 .1 1.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 6 .1 0
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -7.2 .1 -.5
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 10 .1 3.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 8 .1 2.4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 5.6 .1 4.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -9 .1 1.7
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -6.5 .1 .5
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -2.8 .1 1.4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 10.5 .1 .9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -12 .1 1.4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 11.4 .1 2.5
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -10.8 .1 3.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 12.8 .1 2
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 5.6 .1 3.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -6 .1 4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -13.2 .1 2.5
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 2.7 .1 4.2
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 15.2 .1 1.4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 14.7 .2 2.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 16.2 .2 4.3
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -15.2 .2 3.1
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -14.1 .2 1.4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 17 .25 3.4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 17.8 .25 .3
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -16.2 .25 .3
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 18.7 .25 1.5
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 19.6 .25 1.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -17.4 .25 2.4
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -16.8 .25 .9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 20.4 .25 1.1
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -18.2 .25 2.1
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 22.7 .25 3.3
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -19.6 .25 2.7
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -20.4 .3 1
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -21.4 .3 1.5
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 21 .3 2.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 23.5 .3 3.7
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 24.6 .3 1.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -23.6 .3 2
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 7.1 .15 -.2
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation 1 .1 1.9
+		children[
+			USE tree
+		]
+}
+
+Transform{
+	translation -.8 .1 .4
+		children[
+			USE tree
+		]
+}
+]
+}
+
+Transform{
+	translation 50 0 0
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation -50 0 0
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation .3 .7 5.2
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation 50.5 .8 5.3
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation -50.2 .6 5
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation -.2 .7 10.4
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation 49.8 .8 10.1
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation -49.7 .6 10.25
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation .1 .7 15.2
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation 50.25 .8 15.3
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation -50.5 .6 15.1
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation -.1 .7 20.2
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation 51 .8 20.4
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation -49 .6 20.3
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation -51 .6 26.3
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation 51.5 .5 26.5
+		children[
+			USE grove
+		]
+}
+
+Transform{
+	translation .2 .7 26.4
+		children[
+			USE grove
+		]
+}
+
+#Original backdrop
+
+#Transform{
+#	translation 0 2 65
+#		children[
+#			DEF forest Shape{
+#				appearance DEF trees Appearance{
+#					texture ImageTexture{
+#						url "forest.jpg"
+#					}
+#					textureTransform TextureTransform{
+#						scale 3 1
+#					}
+#				}
+#			geometry Box{ size 50 10 1}
+#			}
+#		]
+#}
+
+#Transform{
+#	translation -50 2 65
+#		children[
+#			USE forest
+#		]
+#}
+
+#Transform{
+#	translation 50 2 65
+#		children[
+#			USE forest
+#		]
+#}
+
+#Transform{
+#	translation 0 9 64.8
+#	rotation 1 0 0 -.1
+#		children[
+#			DEF mons Shape{
+#				appearance DEF mountains Appearance{
+#					texture ImageTexture{
+#						url "mountains.jpg"
+#					}
+#					textureTransform TextureTransform{
+#						scale 3 1
+#					}
+#				}
+#			geometry Box{ size 50 10 1}
+#			}
+#		]
+#} 
+
+#Transform{
+#	translation -50 9 64.8
+#	rotation 1 0 0 -.1
+#		children[
+#			USE mons
+#		]
+#}
+
+#Transform{
+#	translation 50 9 64.8
+#	rotation 1 0 0 -.1
+#		children[
+#			USE mons
+#		]
+#}
+
+#Transform{
+#	translation 0 19 65
+#		children[
+#			DEF sky Shape{
+#			appearance DEF skies Appearance{
+#				texture ImageTexture{
+#					url "sky.jpg"
+#				}
+#				textureTransform TextureTransform{
+#					scale 3 1
+#				}
+#			}
+#			geometry Box{ size 50 10 1}
+#			}
+#		]
+#}
+
+#Transform{
+#	translation 50 19 65
+#		children[
+#			USE sky
+#		]
+#}
+
+#Transform{
+#	translation -50 19 65
+#		children[
+#			USE sky
+#		]
+#}
+
+#Transform{
+#	translation 0 29 65
+#		children[
+#			USE sky
+#		]
+#}
+
+#Transform{
+#	translation 50 29 65
+#		children[
+#			USE sky
+#		]
+#}
+
+#Transform{
+#	translation -50 29 65
+#		children[
+#			USE sky
+#		]
+#}
+
+Transform{
+	translation -10 1 -15
+		children[
+			USE window
+		]
+}
+
+#Bed creation
+
+Transform{
+	translation -14.5 -1.75 -14.5
+		children[
+			DEF bedpost Shape{
+			appearance USE wood
+				geometry Cylinder{ height 1.5
+						   radius .2}
+			}
+		]
+}
+
+Transform{
+	translation -14.5 -1.75 -10
+		children[
+			USE bedpost
+		]
+}
+
+Transform{
+	translation -12 -1.75 -14.5
+		children[
+			USE bedpost
+		]
+}
+
+Transform{
+	translation -12 -1.75 -10
+		children[
+			USE bedpost
+		]
+}
+
+Transform{
+	translation -13.25 -1.75 -12.25
+		children[
+			DEF mattress Shape{
+				appearance DEF fur Appearance{
+					texture ImageTexture{
+						url "fur.jpg"
+					}
+				}
+				geometry Box{ size 3 .5 5}
+			}
+		]
+}
+
+#Second story
+
+Transform{
+	translation 0 5 -15
+		children[
+			DEF books Shape{
+				appearance DEF cubby Appearance{
+					texture ImageTexture{
+						url "cubby.jpg"
+						repeatS TRUE
+						repeatT TRUE
+					}
+					textureTransform TextureTransform{
+						scale 15 10
+					}
+				}
+			geometry Box{ size 10 5 .3}
+			}
+		]
+}
+
+Transform{
+	translation -10 5 -15
+		children[
+			USE books
+		]
+}
+
+Transform{
+	translation 10 5 -15
+		children[
+			USE books
+		]
+}
+
+Transform{
+	translation 0 5 0
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation -10 5 0
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 10 5 0
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 0 5 -15.5
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation -10 5 -15.5
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 10 5 -15.5
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 15 5 -5
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 15 5 -10
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation -15 5 -5
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation -15 5 -10
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 0 2.5 -7.5
+		children[
+			DEF ceiling Shape{
+				appearance USE stone
+			geometry Box{ size 10 .3 5}
+			}
+		]
+}
+
+Transform{
+	translation 0 2.5 -2.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 0 2.5 -12.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 10 2.5 -12.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 10 2.5 -7.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 10 2.5 -2.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation -10 2.5 -2.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation -10 2.5 -12.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation -10 2.5 -7.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 0 7.5 -2.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 0 7.5 -7.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 0 7.5 -12.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation -10 7.5 -2.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation -10 7.5 -7.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation -10 7.5 -12.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 10 7.5 -2.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 10 7.5 -7.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 10 7.5 -12.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation -13.5 10 -1.5
+		children[
+			DEF top Shape{
+				appearance USE stone
+			geometry Cone{ bottomRadius 3
+					height 5}
+			}
+		]
+}
+
+Transform{
+	translation -13.5 10 -13.5
+		children[
+			USE top
+		]
+}
+
+Transform{
+	translation 13.5 10 -13.5
+		children[
+			USE top
+		]
+}
+
+Transform{
+	translation 13.5 10 -1.5
+		children[
+			USE top
+		]
+}
+
+#Torches
+
+Transform{
+	translation 2 .8 .5
+	rotation 1 0 0 3.14
+		children[
+			DEF torch Shape{
+				appearance USE wood
+			geometry Cone{ bottomRadius .3
+					height 1}
+			}
+		]
+}
+
+Transform{
+	translation -2 .8 .5
+	rotation 1 0 0 3.14
+		children[
+			USE torch
+		]
+}
+
+Transform{
+	translation 2 1.5 .5
+		children[
+			DEF flame Shape{
+				appearance DEF fire Appearance{
+					texture MovieTexture{
+						url "../fire.mpg"
+						loop TRUE
+						startTime 0
+						stopTime 0
+					}
+				}
+			geometry Cone{ bottomRadius .3
+					height 1}
+			}
+		]
+}
+
+Transform{
+	translation -2 1.5 .5
+		children[
+			USE flame
+		]
+}
+
+Transform{
+	translation -7 .5 -14.5
+	rotation 1 0 0 3.14
+		children[
+			USE torch
+		]
+}
+
+Transform{
+	translation -7 1.2 -14.5
+		children[
+			USE flame
+		]
+}
+
+#Creating Spirit Hall
+
+Transform{
+	translation 3 -18.5 51
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation -2 -18.5 46
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 8 -18.5 46
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 3 -18.5 41
+		children[
+			USE front
+		]
+}
+
+Transform{
+	translation 3 -21 43.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 3 -21 48.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 3 -16 43.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 3 -16 48.5
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 5.5 -18.5 36
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation .5 -18.5 36
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 3 -16 36
+	rotation 0 1 0 1.57
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation .5 -18.5 26
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 5.5 -18.5 26
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 3 -16 26
+	rotation 0 1 0 1.57
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation .5 -18.5 16
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 5.5 -18.5 16
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 3 -16 16
+	rotation 0 1 0 1.57
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation .5 -18.5 6
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 5.5 -18.5 6
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 3 -16 6
+	rotation 0 1 0 1.57
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation .5 -18.5 -4
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 5.5 -18.5 -4
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 3 -16 -4
+	rotation 0 1 0 1.57
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation .5 -18.5 -14
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 5.5 -18.5 -14
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 3 -16 -14
+	rotation 0 1 0 1.57
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation .5 -18.5 -24
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 5.5 -18.5 -24
+		children[
+			USE side
+		]
+}
+
+Transform{
+	translation 3 -16 -24
+	rotation 0 1 0 1.57
+		children[
+			USE ceiling
+		]
+}
+
+Transform{
+	translation 0 11.5 -7.5
+		children[
+			DEF tower Shape{
+				appearance USE stone
+			geometry Cylinder{ radius 3
+					   height 8
+					   top FALSE
+					   bottom FALSE}
+			}
+		]
+}
+
+Transform{
+	translation 0 18 -7.5
+		children[
+			DEF peak Shape{
+				appearance USE glass
+			geometry Cone{ bottomRadius 3
+					height 5
+					bottom FALSE}
+			}
+		]
+}
+
+Transform{
+	translation -1.5 -20.5 50.5
+		children[
+			USE bedpost
+		]
+}
+
+Transform{
+	translation -1.5 -20.5 46
+		children[
+			USE bedpost
+		]
+}
+
+Transform{
+	translation 1 -20.5 50.5
+		children[
+			USE bedpost
+		]
+}
+
+Transform{
+	translation 1 -20.5 46
+		children[
+			USE bedpost
+		]
+}
+		
+Transform{
+	translation -.25 -20.25 48.25
+		children[
+			USE mattress
+		]
+}
+
+DEF littorch Group{
+children[
+Transform{
+	translation 5 -18 42
+	rotation 1 0 0 3.14
+		children[
+			USE torch
+		]
+}
+
+Transform{
+	translation 5 -17.3 42
+		children[
+			USE flame
+		]
+}
+]
+}
+
+Transform{
+	translation -4 -1 -4
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -4
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -10
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -10
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -16
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -16
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -22
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -22
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -28
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -28
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -34
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -34
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -40
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -40
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -46
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -46
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -52
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -52
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -58
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -58
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -64
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -64
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -4 -1 -70
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 0 -1 -70
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation -7 18 -56
+		children[
+			USE littorch
+		]
+}
+
+Transform{
+	translation 4 18 -56
+		children[
+			USE littorch
+		]
+}
+
+#Items for warroom
+
+#Making a sword
+#Lion's Head Crest
+
+DEF sword Group{
+	children[
+		Transform{
+		translation -14.5 5.6 -11
+		rotation 1 0 0 .785
+			children[
+				DEF blade Shape{
+					appearance DEF metal Appearance{
+						material Material{
+							emissiveColor .5 1 1
+							shininess .5
+						}
+					}
+				geometry Cylinder{ radius .1
+						   height 2}
+				}
+			]
+		}
+		Transform{
+			translation -14.5 5.3 -11.3
+			rotation 1 0 0 .785
+			scale 1 .4 1
+				children[
+					DEF handle Shape{
+						appearance USE metal
+					geometry Sphere{radius .3}
+					}
+				]
+		}
+		Transform{
+			translation -14.5 6.4 -10.2
+			rotation 1 0 0 .785
+				children[
+					DEF point Shape{
+						appearance USE metal
+					geometry Cone{ bottomRadius .1
+							height .4}
+					}
+				]
+		}
+	]
+}
+
+Transform{
+	rotation 1 0 0 -1.57
+	translation .2 16.6 -5
+		children[
+			USE sword
+		]
+}
+
+Transform{
+	scale .4 1 1
+	translation -15 5.7 -10.8
+		children[
+			DEF lioncrest Shape{
+				appearance DEF lion Appearance{
+					texture ImageTexture{
+						url "lion.jpg"
+					}
+					textureTransform TextureTransform{
+						scale 2 1
+					}
+				}
+			geometry Sphere{ radius 1.3}
+			}
+		]
+}
+
+#Bookshelf Items
+
+DEF scroll Group{
+	children[
+		Transform{
+			translation -11.35 3.25 -14.9
+			rotation 1 0 0 1.57
+				children[
+					DEF scrollpaper Shape{
+						appearance DEF paper Appearance{
+							texture ImageTexture{
+								url "paper.jpg"
+							}
+						}
+					geometry Cylinder{ radius .18
+							   height .3}
+					}
+				]
+		}
+		Transform{
+			translation -11.35 3.25 -14.9
+			rotation 1 0 0 1.57
+				children[
+					DEF scrolloutline Shape{
+						appearance USE wood
+					geometry Cylinder{radius .1
+							  height .4}
+					}
+				]
+		}
+	]
+}
+
+Anchor{
+children[
+DEF potion Group{
+	children[
+		Transform{
+			translation -8 5.7 -14.9
+				children[
+					DEF bottle Shape{
+						appearance Appearance{
+							material DEF mat Material{
+								diffuseColor 0 0 0
+							}
+						}
+					geometry Sphere{ radius .18}
+					}
+				]
+		}
+		DEF ci ColorInterpolator{
+			key[0 .33 .66 1]
+			keyValue[1 0 0, 0 1 0, 0 0 1, 0 1 0]
+		}
+		DEF ts TimeSensor{
+			cycleInterval 3
+			loop TRUE
+		}
+	]
+}
+]
+url "arcislux.wrl#observatory"
+}
+
+Transform{
+	translation 6 -2 0
+		children[
+			USE potion
+		]
+}
+
+Transform{
+	translation 14.7 2.5 0
+		children[
+			USE scroll
+		]
+}
+
+Transform{
+	translation 2 1 0
+		children[
+			USE scroll
+		]
+}
+
+Transform{
+	translation 12 1 0
+		children[
+			USE potion
+		]
+}
+
+Transform{
+	translation 12.7 3 0
+		children[
+			USE scroll
+		]
+}
+
+Transform{
+	translation 14 -1 0
+		children[
+			USE potion
+		]
+}
+
+Transform{
+	translation 19.3 2 0
+		children[
+			USE scroll
+		]
+}
+
+Transform{
+	translation 18 -2 0
+		children[
+			USE potion
+		]
+}
+
+Transform{
+	translation 6 3 0
+		children[
+			USE scroll
+		]
+}
+
+Transform{
+	translation 20.7 0 0
+		children[
+			USE potion
+		]
+}
+
+DEF table Group{
+	children[
+		Transform{
+			translation 12 3.25 -10.5
+				children[
+					DEF tableleg Shape{
+						appearance USE wood
+					geometry Box{size .3 1.5 .3}
+					}
+				]
+		}
+		Transform{
+			translation 14 3.25 -10.5
+				children[
+					USE tableleg
+				]
+		}
+		Transform{
+			translation 12 3.25 -5.5
+				children[
+					USE tableleg
+				]
+		}
+		Transform{
+			translation 14 3.25 -5.5
+				children[
+					USE tableleg
+				]
+		}
+		Transform{
+			translation 13 4 -8
+				children[
+					DEF tabletop Shape{
+						appearance USE wood
+					geometry Box{size 2.3 .3 5.3}
+					}
+				]
+		}
+	]
+}
+
+Transform{
+	translation 10 23.5 -53
+		children[
+			USE littorch
+		]
+}
+
+
+Transform{
+	translation -20 23.2 -45
+		children[
+			USE littorch
+		]
+}
+
+#Map
+
+DEF map Group{
+	children[
+		Transform{
+			translation 14 5.5 -5
+				children[
+					DEF rollmap Shape{
+						appearance USE paper
+					geometry Cylinder{ radius .4
+							   height 1.8}
+					}
+				]
+		}
+		Transform{
+			translation 14 5.5 -3.5
+				children[
+					DEF flatmap Shape{
+						appearance USE paper
+					geometry Box{ size .1 1.8 3}
+					}
+				]
+		}
+		Transform{
+			translation 13 5.8 -3.5
+			rotation 0 1 0 -1.57
+				children[
+				Shape{
+					appearance Appearance{
+						material Material{
+							diffuseColor 0 0 0
+						}
+					}
+				geometry Text{
+					string ["Artia Mundus",
+						"",
+						":*: ^^^^^^{}{}",
+						":::  ^^^^{}*{}",
+						"    ^ ^^  {}{}"]
+					fontStyle FontStyle{
+						family "SANS"
+						size .3
+						justify "MIDDLE"
+					}
+				}
+				}
+				]
+		}
+	]
+}
+
+#Lion Fetish
+
+DEF lt1 Transform{
+	scale .4 1 1
+	rotation 0 1 0 -1.57
+		children[
+			USE lioncrest
+		]
+}
+
+DEF lts TimeSensor{
+	cycleInterval 76
+	loop TRUE
+}
+
+DEF l1pi PositionInterpolator{
+	key[0 .158 .184 .342 .368 .526 .684 .842 1]
+	keyValue[14.5 6.5 -1, -14.5 6.5 -1, -14.5 3.5 -1, 14.5 3.5 -1, 14.5 6.5 -1, -14.5 3.5 -1, 14.5 3.5 -1, -14.5 6.5 -1, 14.5 6.5 -1]
+}
+
+DEF lt2 Transform{
+	scale .4 1 1
+	rotation 0 1 0 -1.57
+		children[
+			DEF leo2 Shape{
+				appearance DEF lion2 Appearance{
+					texture ImageTexture{
+						url "lion2.jpg"
+					}
+					textureTransform TextureTransform{
+						scale 2 1
+					}
+				}
+			geometry Sphere{ radius 1.3}
+			}
+		]
+}
+
+DEF l2pi PositionInterpolator{
+	key[0 .158 .184 .342 .368 .526 .684 .842 1]
+	keyValue[-14.5 6.5 -1, -14.5 3.5 -1, 14.5 3.5 -1, 14.5 6.5 -1, -14.5 6.5 -1, 14.5 3.5 -1, -14.5 3.5 -1, 14.5 6.5 -1, -14.5 6.5 -1]
+}
+
+DEF lt3 Transform{
+	scale .4 1 1
+	rotation 0 1 0 -1.57
+		children[
+			DEF leo3 Shape{
+				appearance DEF lion3 Appearance{
+					texture ImageTexture{
+						url "lion3.jpg"
+					}
+					textureTransform TextureTransform{
+						scale 2 1
+					}
+				}
+			geometry Sphere{ radius 1.3}
+			}
+		]
+}
+
+DEF l3pi PositionInterpolator{
+	key[0 .158 .184 .342 .368 .526 .684 .842 1]
+	keyValue[14.5 3.5 -1, 14.5 6.5 -1, -14.5 6.5 -1, -14.5 3.5 -1, 14.5 3.5 -1, -14.5 6.5 -1, 14.5 6.5 -1, -14.5 3.5 -1, 14.5 3.5 -1]
+}
+
+DEF lt4 Transform{
+	scale .4 1 1
+	rotation 0 1 0 -1.57
+		children[
+			DEF leo4 Shape{
+				appearance DEF lion4 Appearance{
+					texture ImageTexture{
+						url "lion4.jpg"
+					}
+					textureTransform TextureTransform{
+						scale 2 1
+					}
+				}
+			geometry Sphere{radius 1.3}
+			}
+		]
+}
+
+DEF l4pi PositionInterpolator{
+	key[0 .158 .184 .342 .368 .526 .684 .842 1]
+	keyValue[-14.5 3.5 -1, 14.5 3.5 -1, 14.5 6.5 -1, -14.5 6.5 -1, -14.5 3.5 -1, 14.5 6.5 -1, -14.5 6.5 -1, 14.5 3.5 -1, -14.5 3.5 -1]
+}
+		
+
+#Road to door
+
+Transform{
+	translation 0 -3 17
+		children[
+			DEF road Shape{
+				appearance DEF sand Appearance{
+					texture ImageTexture{
+						url "sand.jpg"
+					}
+				}
+				geometry Box{ size 2 .1 34}
+			}
+		]
+}
+
+]
+}
+
+#Routing
+
+ROUTE ts.fraction_changed TO ci.set_fraction 
+ROUTE ci.value_changed TO mat.set_diffuseColor
+ROUTE lts.fraction_changed TO l1pi.set_fraction
+ROUTE l1pi.value_changed TO lt1.set_translation
+ROUTE lts.fraction_changed TO l2pi.set_fraction
+ROUTE l2pi.value_changed TO lt2.set_translation
+ROUTE lts.fraction_changed TO l3pi.set_fraction
+ROUTE l3pi.value_changed TO lt3.set_translation
+ROUTE lts.fraction_changed TO l4pi.set_fraction
+ROUTE l4pi.value_changed TO lt4.set_translation
